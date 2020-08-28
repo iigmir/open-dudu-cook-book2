@@ -12,7 +12,7 @@ export default {
         other_label() {
             return "其它";
         },
-        dishes_not_in_any_group() {
+        dishes_not_in_group() {
             const tag = this.sorted_tag_getter;
             const labels = this.group_labels_from_module;
             const lists = this.default_list_getter;
@@ -42,7 +42,7 @@ export default {
             }
             return result;
         },
-        group_children_list_from_module() {
+        group_children_from_module() {
             let result = {};
             if( this.type_is_not_group ) {
                 return result;
@@ -50,15 +50,15 @@ export default {
             const {
                 default_list_getter,
                 group_labels_from_module,
-                dishes_not_in_any_group,
+                dishes_not_in_group,
                 sorted_tag_getter,
                 other_label,
             } = this;
             group_labels_from_module.forEach( name => {
                 result[name] = default_list_getter.filter( it => it[sorted_tag_getter] === name );
             });
-            if( dishes_not_in_any_group.length > 0 ) {
-                result[other_label] = result[other_label].concat(dishes_not_in_any_group);
+            if( dishes_not_in_group.length > 0 ) {
+                result[other_label] = result[other_label].concat(dishes_not_in_group);
             }
             return result;
         },
@@ -67,7 +67,7 @@ export default {
                 return [];
             }
             return this.group_labels_from_module.map(
-                name => ({ name, child: this.group_children_list_from_module[name] })
+                name => ({ name, child: this.group_children_from_module[name] })
             );
         }
     }
