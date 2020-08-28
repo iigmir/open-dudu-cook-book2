@@ -6,7 +6,7 @@
                 icon="book" v-bind:active="first_index === isActive">
                 <template slot="label" slot-scope="props">
                     {{ first_item.name }}
-                    <b-icon v-bind:icon="props.expanded ? 'caret-down' : 'caret-up'"></b-icon>
+                    <b-icon v-bind:icon="props.expanded ? 'caret-up' : 'caret-down'"></b-icon>
                 </template>
                 <b-menu-item
                     v-for="(second_item, second_index) in first_item.child"

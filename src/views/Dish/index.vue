@@ -1,6 +1,9 @@
 <template>
     <article class="dish" v-if="has_content">
-        <h1 v-on:click="hide_detail = !hide_detail" class="pointer title">{{ dish_item.name }}</h1>
+        <h1 v-on:click="hide_detail = !hide_detail" class="pointer title">
+            {{ dish_item.name }}
+            <b-icon v-bind:icon="hide_detail ? 'caret-up' : 'caret-down'"></b-icon>
+        </h1>
         <section class="detail area" v-bind:class="{ 'hidden': hide_detail }">
             <ul>
                 <li v-for="(item) in detail_contents" v-bind:key="item.name">

@@ -10,7 +10,7 @@
                     {{ collapse.title }}
                 </p>
                 <a href="javascript:;" class="card-header-icon">
-                    <b-icon v-bind:icon="props.open ? 'caret-down' : 'caret-up'"></b-icon>
+                    <b-icon v-bind:icon="props.open ? 'caret-up' : 'caret-down'"></b-icon>
                 </a>
             </div>
             <div class="card-content">
