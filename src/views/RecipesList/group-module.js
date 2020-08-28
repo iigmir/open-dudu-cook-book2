@@ -13,7 +13,8 @@ export default {
             return "其它";
         },
         type_is_not_group() {
-            return this.sorted_type_getter !== "Group";
+            const { sorted_type_getter, sorted_tag_getter } = this;
+            return sorted_type_getter !== "Group" || sorted_tag_getter === "";
         },
         group_labels_from_module() {
             if( this.type_is_not_group ) {
