@@ -78,6 +78,9 @@ export default {
             case "Group":
                 this.group_action(input);
                 break;
+            case "SearchMeal":
+                this.search_meal_action(input);
+                break;
             case "Feature":
                 this.feature_action(input);
                 break;
@@ -94,7 +97,12 @@ export default {
             this.SET_sorted_type(input.component);
             this.SET_sorted_tag(input.data);
             this.SET_item_by_feature(input.data);
-        }
+        },
+        search_meal_action(input = { component: "", data: "" }) {
+            this.SET_sorted_type(input.component);
+            this.SET_sorted_tag(input.data);
+            this.SET_item_by_feature(input.data);
+        },
     },
 };
 </script>

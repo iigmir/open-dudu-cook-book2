@@ -6,6 +6,9 @@ const state = {
     default_src,
     default_list,
     default_theme,
+    custom_src: [],
+    custom_list: [],
+    custom_theme: [],
 };
 
 const getters = {
