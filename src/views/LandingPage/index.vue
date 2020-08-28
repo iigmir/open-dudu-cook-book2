@@ -2,13 +2,13 @@
     <main class="container is-fluid">
         <Navigator />
         <div class="full columns">
-            <div class="column scroll">
+            <div class="column" v-bind:class="{ hidden: !shown_flag_getter.show_Menu }">
                 <Menu />
             </div>
-            <div class="column scroll">
+            <div class="column" v-bind:class="{ hidden: !shown_flag_getter.show_RecipesList }">
                 <RecipesList />
             </div>
-            <div class="is-three-fifths column scroll">
+            <div v-bind:class="dish_class_binding">
                 <Dish />
             </div>
         </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Menu from "../Menu/index.vue";
 import Dish from "../Dish/index.vue";
 import RecipesList from "../RecipesList/index.vue";
@@ -28,6 +29,17 @@ export default {
         Navigator,
         Menu,
         Dish,
+    },
+    computed: {
+        ...mapGetters( "RecipeFlag", ["shown_flag_getter"]),
+        dish_class_binding() {
+            const columns = Object.values( this.shown_flag_getter ).filter( c => c === true );
+            return {
+                column: true,
+                "is-three-fifths": columns.length === 2,
+                "is-three-quarters": columns.length === 1,
+            };
+        }
     },
     methods: {
         open (link) {
@@ -75,7 +87,7 @@ main > .full.columns {
     overflow-y: scroll;
 }
 
-/* .full.columns .column {
-    padding-bottom: 0;
-} */
+.hidden.column {
+    display: none;
+}
 </style>
