@@ -11,15 +11,17 @@
                 <b-menu-item
                     v-for="(second_item, second_index) in first_item.child"
                     v-bind:key="second_index"
-                    icon="map-marker" v-bind:label="second_item.name">
-                </b-menu-item>
+                    v-bind:label="second_item.name"
+                    v-on:click="choose_dish(second_item)"
+                    icon="map-marker"
+                />
             </b-menu-item>
         </b-menu-list>
     </b-menu>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import group_modules from "./group-module.js";
 
 export default {
@@ -33,7 +35,9 @@ export default {
         };
     },
     computed: {
-        ...mapGetters( "RecipeFlag", [ "sorted_type_getter", ]),
+        ...mapGetters( "RecipeFlag", [
+            "sorted_type_getter",
+        ]),
         example_list() {
             return [
                 { name: "X", child: ["4,1","1,1","1"] },
@@ -55,6 +59,15 @@ export default {
                 return [];
             }
             
+        }
+    },
+    methods: {
+        ...mapActions( "Dish", {
+            SET_dish_item: "SET_item"
+        }),
+        choose_dish(item = {}) {
+            this.SET_dish_item();
+            this.SET_dish_item(item);
         }
     }
 };

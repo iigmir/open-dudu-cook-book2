@@ -2,7 +2,10 @@ import { mapGetters } from "vuex";
 
 export default {
     computed: {
-        ...mapGetters( "RecipeFlag", [ "sorted_tag_getter", "sorted_type_getter" ]),
+        ...mapGetters( "RecipeFlag", [
+            "sorted_tag_getter",
+            "sorted_type_getter"
+        ]),
         ...mapGetters( "Recipes", [
             "default_list_getter",
         ]),

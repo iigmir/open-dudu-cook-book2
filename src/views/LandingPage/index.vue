@@ -8,8 +8,8 @@
             <div class="column scroll">
                 <RecipesList />
             </div>
-            <div class="column scroll">
-                Third column
+            <div class="is-half column scroll">
+                <Dish />
             </div>
         </div>
     </main>
@@ -17,15 +17,17 @@
 
 <script>
 import Menu from "../Menu/index.vue";
+import Dish from "../Dish/index.vue";
 import RecipesList from "../RecipesList/index.vue";
 import Navigator from "../../components/Navigator.vue";
 
 export default {
     name: "landing-page",
     components: {
-        Menu,
         RecipesList,
-        Navigator
+        Navigator,
+        Menu,
+        Dish,
     },
     methods: {
         open (link) {
