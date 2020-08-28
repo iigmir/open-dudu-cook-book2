@@ -12,6 +12,16 @@ export default {
         other_label() {
             return "其它";
         },
+        dishes_not_in_any_group() {
+            const tag = this.sorted_tag_getter;
+            const labels = this.group_labels_from_module;
+            const lists = this.default_list_getter;
+            const result = lists.filter( the => labels.includes( the[tag] ) === false );
+            if( result.length > 0 ) {
+                console.warn( "There're some dishes that do not belong in any group." );
+            }
+            return result;
+        },
         type_is_not_group() {
             const { sorted_type_getter, sorted_tag_getter } = this;
             return sorted_type_getter !== "Group" || sorted_tag_getter === "";
@@ -37,13 +47,9 @@ export default {
             if( this.type_is_not_group ) {
                 return result;
             }
-            const { default_list_getter, group_labels_from_module, other_label } = this;
+            const { default_list_getter, group_labels_from_module, other_label, dishes_not_in_any_group } = this;
             const tag = this.sorted_tag_getter;
-            const no_group_children = default_list_getter.filter( the =>
-                group_labels_from_module
-                    .filter( it => it !== this.other_label )
-                    .some( label => the[tag] !== label )
-            );
+            const no_group_children = dishes_not_in_any_group;
             group_labels_from_module.forEach( name => {
                 result[ name ] = default_list_getter.filter( it => it[tag] === name );
             });
