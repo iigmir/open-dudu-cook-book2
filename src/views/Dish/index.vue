@@ -1,7 +1,7 @@
 <template>
     <article class="dish" v-if="has_content">
         <h1 v-on:click="hide_detail = !hide_detail" class="pointer title">{{ dish_item.name }}</h1>
-        <section class="detail" v-bind:class="{ 'hidden': hide_detail }">
+        <section class="detail area" v-bind:class="{ 'hidden': hide_detail }">
             <ul>
                 <li v-for="(item) in detail_contents" v-bind:key="item.name">
                     <span>{{ item.name }}</span>
@@ -9,11 +9,11 @@
                 </li>
             </ul>
         </section>
-        <section class="source">
+        <section class="source area">
             <h2 class="subtitle">{{ dish_label.source }}</h2>
             <div>{{ dish_item.source }}</div>
         </section>
-        <section class="cooking">
+        <section class="cooking area">
             <h2 class="subtitle">{{ dish_label.cooking }}</h2>
             <div class="pre-formatted">{{ dish_item.cooking }}</div>
         </section>
@@ -68,5 +68,9 @@ export default {
 
 .pre-formatted {
     white-space: pre-line;
+}
+
+.area {
+    margin-bottom: 2rem;
 }
 </style>
