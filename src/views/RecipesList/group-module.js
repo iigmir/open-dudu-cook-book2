@@ -43,18 +43,22 @@ export default {
             return result;
         },
         group_children_list_from_module() {
-            const result = {};
+            let result = {};
             if( this.type_is_not_group ) {
                 return result;
             }
-            const { default_list_getter, group_labels_from_module, other_label, dishes_not_in_any_group } = this;
-            const tag = this.sorted_tag_getter;
-            const no_group_children = dishes_not_in_any_group;
+            const {
+                default_list_getter,
+                group_labels_from_module,
+                dishes_not_in_any_group,
+                sorted_tag_getter,
+                other_label,
+            } = this;
             group_labels_from_module.forEach( name => {
-                result[ name ] = default_list_getter.filter( it => it[tag] === name );
+                result[name] = default_list_getter.filter( it => it[sorted_tag_getter] === name );
             });
-            if( no_group_children.length > 0 ) {
-                result[other_label] = result[other_label].concat(no_group_children);
+            if( dishes_not_in_any_group.length > 0 ) {
+                result[other_label] = result[other_label].concat(dishes_not_in_any_group);
             }
             return result;
         },
