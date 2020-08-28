@@ -15,7 +15,7 @@
         </section>
         <section class="cooking">
             <h2 class="subtitle">{{ dish_label.cooking }}</h2>
-            <div>{{ dish_item.cooking }}</div>
+            <div class="pre-formatted">{{ dish_item.cooking }}</div>
         </section>
     </article>
 </template>
@@ -64,5 +64,9 @@ export default {
 
 .hidden {
     display: none;
+}
+
+.pre-formatted {
+    white-space: pre-line;
 }
 </style>

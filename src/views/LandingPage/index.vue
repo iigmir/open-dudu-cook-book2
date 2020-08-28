@@ -8,7 +8,7 @@
             <div class="column scroll">
                 <RecipesList />
             </div>
-            <div class="is-half column scroll">
+            <div class="is-three-fifths column scroll">
                 <Dish />
             </div>
         </div>
