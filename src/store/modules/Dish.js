@@ -31,7 +31,17 @@ const mutations = {
 const actions = {
     SET_item({ commit }, input = default_item) {
         commit("set_item", input);
-    }
+    },
+    SET_item_by_feature({ commit, rootState }, input = "") {
+        const list = rootState.Recipes.default_list.book.record;
+        const result = list.filter( item => item.name === input );
+        if( result.length > 0 ) {
+            if( result.length > 1 ) {
+                console.warn( "Have more than one dishes, choose the first one: ", result[0] );
+            }
+            commit("set_item", result[0]);
+        }
+    },
 };
 
 export default {

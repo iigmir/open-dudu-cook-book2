@@ -15,7 +15,8 @@ module.exports = {
         "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
         "semi": ["warn", "always"],
         "quotes": ["error", "double", { "allowTemplateLiterals": true }],
-        "indent": ["warn", 4]
+        "indent": ["warn", 4],
+        "no-unused-vars": ["warn", "always"]
     },
     overrides: [
         {

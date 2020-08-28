@@ -70,10 +70,16 @@ export default {
             "SET_sorted_type",
             "SET_sorted_tag",
         ]),
+        ...mapActions("Dish", [
+            "SET_item_by_feature",
+        ]),
         emit_from_card(input = { component: "", data: "" }) {
             switch (input.component) {
             case "Group":
                 this.group_action(input);
+                break;
+            case "Feature":
+                this.feature_action(input);
                 break;
             default:
                 console.log(input);
@@ -83,6 +89,11 @@ export default {
         group_action(input = { component: "", data: "" }) {
             this.SET_sorted_type(input.component);
             this.SET_sorted_tag(input.data);
+        },
+        feature_action(input = { component: "", data: "" }) {
+            this.SET_sorted_type(input.component);
+            this.SET_sorted_tag(input.data);
+            this.SET_item_by_feature(input.data);
         }
     },
 };
