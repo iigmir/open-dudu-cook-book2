@@ -11,6 +11,17 @@
                 <span class="link-label">{{ fc_item.label }}</span>
             </a>
         </div>
+        <!-- <div class="column">
+            <b-dropdown aria-role="list">
+                <a href="javascript:;" slot="trigger">
+                    <b-icon icon="hat-cowboy-side" size="is-large" />
+                    <span class="link-label">顯示風格</span>
+                </a>
+                <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
+                <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
+                <b-dropdown-item aria-role="listitem">Something else</b-dropdown-item>
+            </b-dropdown>
+        </div> -->
     </nav>
 </template>
 
