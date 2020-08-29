@@ -3,7 +3,7 @@
         <b-field>
             <b-input placeholder="查詢菜名..." type="search" icon="search" v-model="text" />
         </b-field>
-        <ul v-if="matches_list.length < queries_list.length">
+        <ul v-if="matches_list.length < default_list_getter.length">
             <li v-for="(item, index) in matches_list" v-bind:key="index">
                 <a v-on:click="click_event('SearchMeal', item)" href="javascript:;">{{ item }}</a>
             </li>
