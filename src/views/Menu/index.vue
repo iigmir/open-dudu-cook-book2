@@ -15,7 +15,10 @@
             </div>
             <div class="card-content">
                 <div class="content">
-                    <component v-bind:is="collapse.component" v-on:emit="emit_from_card"></component>
+                    <component
+                        v-bind:is="collapse.component"
+                        v-on:emit="emit_from_card"
+                    />
                 </div>
             </div>
         </b-collapse>
@@ -64,6 +67,30 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        component_binding() {
+            return this.collapses.map( item => {
+                const is = item.component;
+                const query_dictionary = {
+                    "SearchMeal": {
+                        component_type: is,
+                        place_holder: "查詢菜名...",
+                        query_label: "name"
+                    },
+                    "SearchFood": {
+                        component_type: is,
+                        placeholder: "查詢食材...",
+                        querylabel: "source"
+                    }
+                };
+                const query_feat = query_dictionary[is] || {};
+                return {
+                    is,
+                    ...query_feat
+                };
+            });
+        }
     },
     methods: {
         ...mapActions("RecipeFlag", [

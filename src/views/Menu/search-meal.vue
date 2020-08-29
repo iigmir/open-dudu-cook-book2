@@ -9,8 +9,8 @@
                 v-model="text"
             />
         </b-field>
-        <ul v-if="meals_matches_text.length < meals_list.length">
-            <li v-for="(item, index) in meals_matches_text" v-bind:key="index">
+        <ul v-if="matches_list.length < queries_list.length">
+            <li v-for="(item, index) in matches_list" v-bind:key="index">
                 <a v-on:click="click_event('SearchMeal', item)" href="javascript:;">{{ item }}</a>
             </li>
         </ul>
@@ -19,22 +19,13 @@
 
 <script>
 import emits from "./child-emits.js";
-import { mapGetters } from "vuex";
+import query from "./query-feat.js";
 
 export default {
     name: "SearchMeal",
-    mixins: [ emits ],
+    mixins: [ emits, query ],
     data: () => ({
-        text: ""
+        query_label: "name",
     }),
-    computed: {
-        ...mapGetters( "Recipes", [ "default_list_getter" ] ),
-        meals_list() {
-            return this.default_list_getter.map( i => i.name );
-        },
-        meals_matches_text() {
-            return this.meals_list.filter( item => item.match( this.text ) );
-        },
-    },
 };
 </script>
