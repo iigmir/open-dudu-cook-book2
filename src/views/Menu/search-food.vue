@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="search-food">
         <b-field>
             <b-input placeholder="查詢食材..." type="search" icon="search" v-model="text" />
         </b-field>
