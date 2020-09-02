@@ -1,5 +1,8 @@
 <template>
     <nav class="columns">
+        <form hidden>
+            <input ref="file_dom" type="file" name="file-dom" id="file-dom" accept=".xml" />
+        </form>
         <div class="column">
             <a
                 href="javascript:;"
@@ -31,8 +34,9 @@ export default {
     name: "Navigator",
     data: () => ({
         first_column: [
-            { icon: "bars", label: "顯示工具欄", act: "SET_toggle_show_Menu" },
+            { icon: "bars", label: "工具欄", act: "SET_toggle_show_Menu" },
             { icon: "address-book", label: "菜譜索引", act: "SET_toggle_show_RecipesList" },
+            // { icon: "file-code", label: "載入菜譜", act: "load_menu" },
         ],
     }),
     methods: {
@@ -43,6 +47,15 @@ export default {
         link_action(action_name) {
             this[action_name]();
         },
+        load_menu() {
+            const input = this.$refs.file_dom;
+            input.addEventListener( "change", (e) => this.change_event(e) );
+            input.click();
+        },
+        change_event(event) {
+            console.log(event);
+            const fr =new FileReader();
+        }
     },
 };
 </script>
